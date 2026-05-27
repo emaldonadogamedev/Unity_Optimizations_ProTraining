@@ -10,6 +10,10 @@ public class MazeSpawnerIndustry : MazeSpawner
    protected override void Start()
    {
       base.Start();
-      GameObject.Instantiate(playerPrefab, playerStartLoc.transform.position, Quaternion.identity);
+
+      StaticBatchingUtility.Combine(this.gameObject);
+
+      // Spawning the roomba controlled by the player
+      Instantiate(playerPrefab, playerStartLoc.transform.position, Quaternion.identity);
    }
 }
