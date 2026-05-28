@@ -42,7 +42,7 @@ public class AlarmLightControl : MonoBehaviour
    private void OnTriggerStay(Collider other)
    {
        // Debug.Log($"OnTriggerStay {other.name} frame:{Time.frameCount}");
-       UpdateCone(FindClosestHitPoint());
+       //UpdateCone(FindClosestHitPoint());
    }
 
    private void OnTriggerExit(Collider other)
