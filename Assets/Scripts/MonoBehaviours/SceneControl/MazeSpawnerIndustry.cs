@@ -11,7 +11,7 @@ public class MazeSpawnerIndustry : MazeSpawner
    {
       base.Start();
 
-      StaticBatchingUtility.Combine(this.gameObject);
+      //StaticBatchingUtility.Combine(this.gameObject);
 
       // Spawning the roomba controlled by the player
       Instantiate(playerPrefab, playerStartLoc.transform.position, Quaternion.identity);
