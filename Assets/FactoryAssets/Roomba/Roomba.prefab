@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 7279344453480347969}
   - component: {fileID: 5208894845527246783}
   - component: {fileID: -6275759810915885958}
+  - component: {fileID: 6402597078924070258}
   m_Layer: 9
   m_Name: Roomba
   m_TagString: Untagged
@@ -389,3 +390,24 @@ MonoBehaviour:
   colorMove: {r: 1, g: 0, b: 0, a: 0}
   colorStationary: {r: 0, g: 1, b: 0, a: 0}
   stopVelThresh: 0.05
+--- !u!114 &6402597078924070258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864500873814810531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d403cc22634195742953b594a4196b66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PackingManager
+  inputTextures:
+  - {fileID: 2800000, guid: 31a1cb1a2782f42de8a7b0aba0aa6aa9, type: 3}
+  - {fileID: 2800000, guid: 2176cfbd3e53e4ae192837118ddc0ab6, type: 3}
+  - {fileID: 2800000, guid: f28f2b3b0f0944dbfa18a9c633d7ea69, type: 3}
+  - {fileID: 2800000, guid: f9c5888fce94943caa5205611de9ec38, type: 3}
+  - {fileID: 2800000, guid: 939d4bce1f62144179d64a2c1da6df17, type: 3}
+  - {fileID: 2800000, guid: 2e13c7954f7b54c23bd86a2dc1ad4455, type: 3}
+  - {fileID: 2800000, guid: 3830db7e2e4af4c9ca0819b8305aa23c, type: 3}
+  - {fileID: 2800000, guid: 127b06e0f6c3247b4bc756312c4b469c, type: 3}

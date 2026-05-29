@@ -6,6 +6,8 @@ public class MoveToClickPoint : MonoBehaviour
     protected NavMeshAgent agent;
     protected Animator anim;
 
+    private int runningHash = Animator.StringToHash("running");
+
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -16,9 +18,7 @@ public class MoveToClickPoint : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100))
             {
                 agent.destination = hit.point;
             }
@@ -27,11 +27,12 @@ public class MoveToClickPoint : MonoBehaviour
         if (agent.velocity.sqrMagnitude > Vector3.zero.sqrMagnitude)
         {
             if(anim != null)
-                anim.SetBool("running", true);
-        } else
+                anim.SetBool(runningHash, true);
+        }
+        else
         {
             if(anim != null)
-                anim.SetBool("running", false);
+                anim.SetBool(runningHash, false);
         }
     }
 }

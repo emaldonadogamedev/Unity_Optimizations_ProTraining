@@ -10,31 +10,37 @@ public class MoveToClickPointIndustry : MoveToClickPoint
     private float stopVelThresh = 0.05f;
 
     private Light indicatorLight;
-    private NavMeshAgent navMeshAgent;
 
 
     private void Awake()
     {
-        Transform cameraRef = transform.Find("CameraRef");
         
-        GameObject mainCam = GameObject.FindWithTag("MainCamera");
-        mainCam.transform.SetParent(cameraRef);
-        mainCam.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        mainCam.transform.localScale = Vector3.one;
- 
-        PlayerCameraControl ctrl = cameraRef.gameObject.GetComponent<PlayerCameraControl>();
-        if(ctrl == null)
-            ctrl = cameraRef.gameObject.AddComponent<PlayerCameraControl>();
-        ctrl.SetParent(transform);
-
-        navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
     }
 
     protected override void Start()
     {
         base.Start();
+        
+        SetMainCamera();
+
         indicatorLight = transform.GetComponentInChildren<Light>();
     }
+
+    private void SetMainCamera()
+    {
+        Transform cameraRef = transform.Find("CameraRef");
+
+        GameObject mainCam = GameObject.FindWithTag("MainCamera");
+        mainCam.transform.SetParent(cameraRef);
+        mainCam.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        mainCam.transform.localScale = Vector3.one;
+
+        PlayerCameraControl ctrl = cameraRef.gameObject.GetComponent<PlayerCameraControl>();
+        if (ctrl == null)
+            ctrl = cameraRef.gameObject.AddComponent<PlayerCameraControl>();
+        ctrl.SetParent(transform);
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -50,17 +56,11 @@ public class MoveToClickPointIndustry : MoveToClickPoint
         if (indicatorLight == null)
             return;
 
-        if (IsMoving())
-        {
-            Debug.Log("Roomba is moving");
-            indicatorLight.color = colorMove;
-        }
-        else
-            indicatorLight.color = colorStationary;
+        indicatorLight.color = IsMoving() ? colorMove : colorStationary;
     }
 
     private bool IsMoving()
     {
-        return navMeshAgent.velocity.sqrMagnitude > stopVelThresh;
+        return agent.velocity.sqrMagnitude > stopVelThresh;
     }
 }
